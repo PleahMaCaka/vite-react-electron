@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "author": "PleahMaCaka",
   "license": "MIT",
+  "packageManager": "pnpm@8.2.0",
   "main": "dist-electron/main.js",
   "scripts": {
     "dev": "vite",
