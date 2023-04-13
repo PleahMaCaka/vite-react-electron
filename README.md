@@ -5,7 +5,7 @@ This template is used to develop cross-platform desktop web-app using Vite, Reac
 ## GitHub Action
 
 - Build tests are run with Github Actions
-- When you draft a new release, the installer `exe`, `dev`, `dmg` files are automatically provided in artifacts(assets)
+- When you draft a new release, the installer `exe`, `deb`, `dmg` files are automatically provided in artifacts(assets)
 
 ## Development
 
