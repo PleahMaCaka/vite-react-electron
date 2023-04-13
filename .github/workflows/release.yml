@@ -26,6 +26,7 @@ jobs:
 
   build:
     name: Build
+    permissions: write-all
     needs: prepare
     strategy:
       fail-fast: true
