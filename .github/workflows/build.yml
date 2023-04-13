@@ -33,7 +33,7 @@ jobs:
           - ubuntu-latest
           - windows-latest
           - macos-latest
-      runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Setup Node.js
         uses: actions/setup-node@v3
