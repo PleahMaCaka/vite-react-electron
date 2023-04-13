@@ -28,8 +28,6 @@
   "linux": {
     "category": "Development",
     "target": [
-      "tar.gz",
-      "flatpak",
       "deb"
     ]
   },
