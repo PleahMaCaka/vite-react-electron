@@ -9,7 +9,11 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "build:electron": "electron-builder"
+    "build:electron": "electron-builder -wl",
+    "build:electron:windows": "electron-builder -w",
+    "build:electron:linux": "electron-builder -l",
+    "build:electron:mac": "electron-builder -m",
+    "all:build": "pnpm build && pnpm build:electron"
   },
   "dependencies": {
     "react": "^18.2.0",

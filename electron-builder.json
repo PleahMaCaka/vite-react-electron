@@ -10,11 +10,6 @@
     "dist",
     "dist-electron"
   ],
-  "mac": {
-    "target": [
-      "dmg"
-    ]
-  },
   "win": {
     "target": [
       {
@@ -23,6 +18,18 @@
           "x64"
         ]
       }
+    ]
+  },
+  "mac": {
+    "target": [
+      "dmg"
+    ]
+  },
+  "linux": {
+    "target": [
+      "tar.gz",
+      "flatpak",
+      "deb"
     ]
   },
   "nsis": {
