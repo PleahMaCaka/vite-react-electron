@@ -1,13 +1,12 @@
-name: build
+name: Build
 
 on:
   push:
-    tags:
+    branches:
       - '*'
   workflow_dispatch:
-    tag:
+    just_trigger:
       required: false
-      default: 'Hello'
       type: string
 
 jobs:

@@ -1,13 +1,12 @@
-name: build
+name: Release
 
 on:
   push:
     tags:
       - '*'
   workflow_dispatch:
-    tag:
+    version_tag:
       required: false
-      default: 'Hello'
       type: string
 
 jobs:
