@@ -63,19 +63,5 @@ jobs:
       - name: Vite Build
         run: pnpm build
 
-      - uses: ncipollo/release-action@v1
-        if: ${{ success() && matrix.os == 'ubuntu-latest' }}
-        with:
-          artifacts: "release/*.deb"
-          allowUpdates: true
-
-      - uses: ncipollo/release-action@v1
-        if: ${{ success() && matrix.os == 'windows-latest' }}
-        with:
-          artifacts: "release/*.exe"
-          allowUpdates: true
-
-      - uses: ncipollo/release-action@v1
-        if: ${{ success() && matrix.os == 'macos-latest' }}
-        artifacts: "release/*.dmg"
-        allowUpdates: true
+      - name: Electron Build
+        run: pnpm build:electron
