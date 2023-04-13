@@ -26,6 +26,7 @@
     ]
   },
   "linux": {
+    "icon": "./public/icon.png",
     "category": "Development",
     "target": [
       "deb"
