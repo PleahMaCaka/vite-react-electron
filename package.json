@@ -2,7 +2,11 @@
   "name": "vite-react-electron",
   "description": "Vite + React + Electron Template!",
   "version": "0.1.0",
-  "author": "PleahMaCaka",
+  "author": {
+    "name": "PleahMaCaka",
+    "email": "pleahmacaka@gmail.com"
+  },
+  "homepage": "https://github.com/pleahmacaka/vite-react-electron",
   "license": "MIT",
   "packageManager": "pnpm@8.2.0",
   "main": "dist-electron/main.js",
