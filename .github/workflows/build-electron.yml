@@ -1,4 +1,4 @@
-name: Build
+name: Build Electron
 
 on:
   push:
@@ -8,11 +8,14 @@ on:
       - '*-dev'
       - '*-electron'
   pull_request:
-    - '*'
+    branches:
+      - '*'
   workflow_dispatch:
-    just_trigger:
-      required: false
-      type: string
+    inputs:
+      just_trigger:
+        description: 'Just a trigger'
+        required: false
+        type: string
 
 jobs:
   prepare:
