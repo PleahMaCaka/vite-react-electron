@@ -4,7 +4,7 @@ import './App.css'
 import reactLogo from './assets/react.svg'
 import electronLogo from "./assets/electron.svg"
 
-function App() {
+export default function App() {
   const [count, setCount] = useState(0)
 
   return (
@@ -35,5 +35,3 @@ function App() {
     </div>
   )
 }
-
-export default App
