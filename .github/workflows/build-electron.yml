@@ -3,7 +3,12 @@ name: Build
 on:
   push:
     branches:
-      - '*'
+      - 'main'
+      - 'dev'
+      - '*-dev'
+      - '*-electron'
+  pull_request:
+    - '*'
   workflow_dispatch:
     just_trigger:
       required: false
