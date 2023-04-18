@@ -3,10 +3,7 @@ name: Build Electron
 on:
   push:
     branches:
-      - 'main'
-      - 'dev'
-      - '*-dev'
-      - '*-electron'
+      - '*'
   pull_request:
     branches:
       - '*'
