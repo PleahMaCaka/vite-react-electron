@@ -1,13 +1,16 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, Tray, Menu, globalShortcut } from 'electron'
+import { state } from './electronState'
+import { Logger } from '@pleahmacaka/logger'
 
-function createWindow() {
+const isDev: boolean = process.env.VITE_DEV_SERVER_URL !== undefined
+
+const VITE_DEV_SERVER_URL = process.env.VITE_DEV_SERVER_URL as string
+
+async function createWindow() {
     const win = new BrowserWindow({
         title: "vite-react-electron",
         width: 800,
         height: 800,
-        // webPreferences: {
-        //     preload: path.join(__dirname, 'preload.js')
-        // },
         alwaysOnTop: true,
         transparent: true,
         autoHideMenuBar: true,
@@ -15,25 +18,55 @@ function createWindow() {
         frame: false
     })
 
-    if (process.env.VITE_DEV_SERVER_URL) {
-        win.loadURL(process.env.VITE_DEV_SERVER_URL)
-    } else {
-        win.loadFile('dist/index.html');
-    }
+
+    const url = isDev ?
+        new URL(VITE_DEV_SERVER_URL as string) :
+        new URL("./dist/index.html")
+
+    url.protocol = "flyo:"
+
+    if (isDev) await win.loadURL(url.toString())
+    else await win.loadFile(url.toString())
 }
 
-app.whenReady().then(() => {
-    createWindow()
+async function createTray() {
+    const tray = new Tray("./public/icon.ico")
+    tray.setToolTip("vite-react-electron")
+    tray.setContextMenu(Menu.buildFromTemplate([
+        {
+            label: "Exit",
+            click: () => {
+                app.quit()
+            }
+        }
+    ]))
+}
 
-    app.on('activate', () => {
-        if (BrowserWindow.getAllWindows().length === 0) {
-            createWindow()
+async function buildElectron() {
+    await createTray()
+    await createWindow()
+
+    await registerShortcuts()
+}
+
+async function registerShortcuts() {
+    globalShortcut.register("CommandOrControl+`", () => {
+        if (state.isShowing) {
+            BrowserWindow.getAllWindows()[0].hide()
+            state.isShowing = false
+            Logger.info("Hiding window")
+        } else {
+            BrowserWindow.getAllWindows()[0].show()
+            state.isShowing = true
+            Logger.info("Showing window")
         }
     })
-})
+}
 
-app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') {
-        app.quit()
-    }
+app.whenReady().then(async () => {
+    await buildElectron()
+
+    app.on("activate", async () => {
+        Logger.info("App is activate")
+    })
 })
