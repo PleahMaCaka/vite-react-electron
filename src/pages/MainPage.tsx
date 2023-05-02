@@ -1,9 +1,8 @@
 import viteLogo from '/vite.svg'
-import { useState } from 'react'
 import './MainPage.css'
 import reactLogo from '../assets/react.svg'
 import electronLogo from "../assets/electron.svg"
-import { addCount, addCountSlice } from '../redux/CounterSlice'
+import { addCount } from '../redux/CounterSlice'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { RootState } from '../redux/Store'

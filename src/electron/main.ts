@@ -23,7 +23,7 @@ async function createWindow() {
         new URL(VITE_DEV_SERVER_URL as string) :
         new URL("./dist/index.html")
 
-    url.protocol = "flyo:"
+    url.protocol = "file:"
 
     if (isDev) await win.loadURL(url.toString())
     else await win.loadFile(url.toString())
