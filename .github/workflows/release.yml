@@ -4,12 +4,6 @@ on:
   push:
     tags:
       - '*'
-    branches:
-      - 'main'
-      - 'dev'
-      - '*-dev'
-      - '*-electron'
-      - '*-release'
   workflow_dispatch:
     version_tag:
       required: false
